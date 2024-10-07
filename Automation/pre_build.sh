@@ -12,13 +12,17 @@ if [ ! -e "$exec_path" ]; then
     exit 1
 fi
 
-if ! command -v python3 &> /dev/null; then
-    echo "Error: Python 3 is not installed."
-    exit 2
+if command -v python3 &> /dev/null; then
+    python_cmd=$(command -v python3)
+elif command -v python &> /dev/null; then
+    python_cmd=$(command -v python)
 else
-    echo "Python 3 is available at: $(command -v python3)"
+    echo "Error: Python is not installed."
+    exit 1
 fi
 
+echo "Python is available at: $python_cmd"
 echo "Printing files from: $exec_path"
-python3 "$script_dir"/walk_over_folders.py "$exec_path"
+"$python_cmd" "$script_dir"/walk_over_folders.py "$exec_path"
 echo "//// //// //// //// //// //// //// //// //// //// //// ////"
+exit 0
