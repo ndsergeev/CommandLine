@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Running: sh ./Automation/generate_room_export_fbx.sh
+
 # UE Editor executable
 UE_EDITOR="/Applications/UE_5.4/Engine/Binaries/Mac/UnrealEditor.app/Contents/MacOS/UnrealEditor"
 
@@ -25,4 +27,4 @@ chmod 755 $PYTHON_SCRIPT
 
 # "$UE_EDITOR" "$PROJECT_PATH" -ExecutePythonScript="$PYTHON_SCRIPT"
 # "$UE_EDITOR" "$PROJECT_PATH" -run=pythonscript -script="$PYTHON_SCRIPT"
-"$UE_EDITOR" "$PROJECT_PATH" -ExecutePythonScript="$PYTHON_SCRIPT --level_name $LEVEL_NAME --export_filepath $EXPORT_FILEPATH"
+"$UE_EDITOR" "$PROJECT_PATH" -ExecutePythonScript="$PYTHON_SCRIPT --level_name $LEVEL_NAME --export_filepath $EXPORT_FILEPATH" -nullrhi
